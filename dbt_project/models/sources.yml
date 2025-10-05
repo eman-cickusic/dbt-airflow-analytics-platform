@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: staging
+    schema: staging # this is the schema Airflow 
+    tables:
+      - name: users
+      - name: orders
+      - name: tickets

@@ -1,0 +1,33 @@
+[2025-10-04T23:24:08.491+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_data_dag.ingest_users_data manual__2025-10-04T23:17:44.635799+00:00 [queued]>
+[2025-10-04T23:24:08.503+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_data_dag.ingest_users_data manual__2025-10-04T23:17:44.635799+00:00 [queued]>
+[2025-10-04T23:24:08.503+0000] {taskinstance.py:2170} INFO - Starting attempt 3 of 3
+[2025-10-04T23:24:08.519+0000] {taskinstance.py:2191} INFO - Executing <Task(S3ToSqlOperator): ingest_users_data> on 2025-10-04 23:17:44.635799+00:00
+[2025-10-04T23:24:08.526+0000] {standard_task_runner.py:60} INFO - Started process 2274 to run task
+[2025-10-04T23:24:08.533+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'ingest_data_dag', 'ingest_users_data', 'manual__2025-10-04T23:17:44.635799+00:00', '--job-id', '15', '--raw', '--subdir', 'DAGS_FOLDER/dag_ingest_data.py', '--cfg-path', '/tmp/tmply05e3k3']
+[2025-10-04T23:24:08.538+0000] {standard_task_runner.py:88} INFO - Job 15: Subtask ingest_users_data
+[2025-10-04T23:24:08.610+0000] {task_command.py:423} INFO - Running <TaskInstance: ingest_data_dag.ingest_users_data manual__2025-10-04T23:17:44.635799+00:00 [running]> on host ff034d7c1964
+[2025-10-04T23:24:08.751+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_data_dag' AIRFLOW_CTX_TASK_ID='ingest_users_data' AIRFLOW_CTX_EXECUTION_DATE='2025-10-04T23:17:44.635799+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-04T23:17:44.635799+00:00'
+[2025-10-04T23:24:08.753+0000] {s3_to_sql.py:105} INFO - Loading users.csv to SQL table "staging"."users"...
+[2025-10-04T23:24:08.765+0000] {base.py:83} INFO - Using connection ID 'minio_s3' for task execution.
+[2025-10-04T23:24:08.767+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='minio_s3', conn_type='aws') credentials retrieved from login and password.
+[2025-10-04T23:24:12.062+0000] {base.py:83} INFO - Using connection ID 'postgres_warehouse' for task execution.
+[2025-10-04T23:24:12.076+0000] {base.py:83} INFO - Using connection ID 'postgres_warehouse' for task execution.
+[2025-10-04T23:24:12.082+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/transfers/s3_to_sql.py", line 115, in execute
+    self.db_hook.insert_rows(
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/common/sql/hooks/sql.py", line 541, in insert_rows
+    cur.execute(sql, values)
+psycopg2.errors.UndefinedTable: relation "staging.users" does not exist
+LINE 1: INSERT INTO "staging"."users"  VALUES ('b74282b3-90a4-4620-8...
+                    ^
+
+[2025-10-04T23:24:12.105+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=ingest_data_dag, task_id=ingest_users_data, execution_date=20251004T231744, start_date=20251004T232408, end_date=20251004T232412
+[2025-10-04T23:24:12.127+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 15 for task ingest_users_data (relation "staging.users" does not exist
+LINE 1: INSERT INTO "staging"."users"  VALUES ('b74282b3-90a4-4620-8...
+                    ^
+; 2274)
+[2025-10-04T23:24:12.195+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-10-04T23:24:12.218+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

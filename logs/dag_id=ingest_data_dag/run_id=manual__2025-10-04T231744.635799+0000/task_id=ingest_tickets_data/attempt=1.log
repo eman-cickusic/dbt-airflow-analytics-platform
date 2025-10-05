@@ -1,0 +1,24 @@
+[2025-10-04T23:17:48.144+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_data_dag.ingest_tickets_data manual__2025-10-04T23:17:44.635799+00:00 [queued]>
+[2025-10-04T23:17:48.161+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_data_dag.ingest_tickets_data manual__2025-10-04T23:17:44.635799+00:00 [queued]>
+[2025-10-04T23:17:48.162+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-10-04T23:17:48.191+0000] {taskinstance.py:2191} INFO - Executing <Task(S3ToSqlOperator): ingest_tickets_data> on 2025-10-04 23:17:44.635799+00:00
+[2025-10-04T23:17:48.205+0000] {standard_task_runner.py:60} INFO - Started process 2008 to run task
+[2025-10-04T23:17:48.216+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'ingest_data_dag', 'ingest_tickets_data', 'manual__2025-10-04T23:17:44.635799+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/dag_ingest_data.py', '--cfg-path', '/tmp/tmpjle2n_s2']
+[2025-10-04T23:17:48.223+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask ingest_tickets_data
+[2025-10-04T23:17:48.349+0000] {task_command.py:423} INFO - Running <TaskInstance: ingest_data_dag.ingest_tickets_data manual__2025-10-04T23:17:44.635799+00:00 [running]> on host ff034d7c1964
+[2025-10-04T23:17:48.519+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_data_dag' AIRFLOW_CTX_TASK_ID='ingest_tickets_data' AIRFLOW_CTX_EXECUTION_DATE='2025-10-04T23:17:44.635799+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-04T23:17:44.635799+00:00'
+[2025-10-04T23:17:48.523+0000] {s3_to_sql.py:105} INFO - Loading support_tickets.csv to SQL table "staging"."tickets"...
+[2025-10-04T23:17:48.547+0000] {base.py:83} INFO - Using connection ID 'minio_s3' for task execution.
+[2025-10-04T23:17:48.549+0000] {connection_wrapper.py:378} INFO - AWS Connection (conn_id='minio_s3', conn_type='aws') credentials retrieved from login and password.
+[2025-10-04T23:17:49.212+0000] {base.py:83} INFO - Using connection ID 'postgres_warehouse' for task execution.
+[2025-10-04T23:17:49.218+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/providers/amazon/aws/transfers/s3_to_sql.py", line 119, in execute
+    rows=self.parser(local_tempfile.name),
+TypeError: 'str' object is not callable
+[2025-10-04T23:17:49.232+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=ingest_data_dag, task_id=ingest_tickets_data, execution_date=20251004T231744, start_date=20251004T231748, end_date=20251004T231749
+[2025-10-04T23:17:49.251+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 11 for task ingest_tickets_data ('str' object is not callable; 2008)
+[2025-10-04T23:17:49.317+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-10-04T23:17:49.362+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

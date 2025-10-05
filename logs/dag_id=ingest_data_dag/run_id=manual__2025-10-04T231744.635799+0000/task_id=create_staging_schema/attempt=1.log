@@ -1,0 +1,16 @@
+[2025-10-04T23:17:46.094+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: ingest_data_dag.create_staging_schema manual__2025-10-04T23:17:44.635799+00:00 [queued]>
+[2025-10-04T23:17:46.109+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: ingest_data_dag.create_staging_schema manual__2025-10-04T23:17:44.635799+00:00 [queued]>
+[2025-10-04T23:17:46.110+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-10-04T23:17:46.132+0000] {taskinstance.py:2191} INFO - Executing <Task(PostgresOperator): create_staging_schema> on 2025-10-04 23:17:44.635799+00:00
+[2025-10-04T23:17:46.141+0000] {standard_task_runner.py:60} INFO - Started process 2003 to run task
+[2025-10-04T23:17:46.149+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'ingest_data_dag', 'create_staging_schema', 'manual__2025-10-04T23:17:44.635799+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/dag_ingest_data.py', '--cfg-path', '/tmp/tmpdtxrwn25']
+[2025-10-04T23:17:46.154+0000] {standard_task_runner.py:88} INFO - Job 9: Subtask create_staging_schema
+[2025-10-04T23:17:46.269+0000] {task_command.py:423} INFO - Running <TaskInstance: ingest_data_dag.create_staging_schema manual__2025-10-04T23:17:44.635799+00:00 [running]> on host ff034d7c1964
+[2025-10-04T23:17:46.412+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='ingest_data_dag' AIRFLOW_CTX_TASK_ID='create_staging_schema' AIRFLOW_CTX_EXECUTION_DATE='2025-10-04T23:17:44.635799+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-10-04T23:17:44.635799+00:00'
+[2025-10-04T23:17:46.415+0000] {sql.py:276} INFO - Executing: CREATE SCHEMA IF NOT EXISTS staging;
+[2025-10-04T23:17:46.430+0000] {base.py:83} INFO - Using connection ID 'postgres_warehouse' for task execution.
+[2025-10-04T23:17:46.448+0000] {base.py:83} INFO - Using connection ID 'postgres_warehouse' for task execution.
+[2025-10-04T23:17:46.456+0000] {sql.py:450} INFO - Running statement: CREATE SCHEMA IF NOT EXISTS staging;, parameters: None
+[2025-10-04T23:17:46.474+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=ingest_data_dag, task_id=create_staging_schema, execution_date=20251004T231744, start_date=20251004T231746, end_date=20251004T231746
+[2025-10-04T23:17:46.522+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-10-04T23:17:46.561+0000] {taskinstance.py:3280} INFO - 3 downstream tasks scheduled from follow-on schedule check
