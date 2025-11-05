@@ -10,7 +10,7 @@ This system mirrors a modern, production-grade data stack and demonstrates best 
 *   **Automated Data Quality Testing:** The pipeline includes a dbt test suite to enforce data integrity, including checks for uniqueness, non-null values, and referential integrity.
 *   **Integrated Documentation:** The project includes a self-generating documentation website that provides full data lineage and model descriptions.
 
-## Architecture Diagram 
+## Architecture Diagram  
 
 <!-- 
   **ACTION REQUIRED:** Create an architecture diagram using a tool like draw.io or Excalidraw.
